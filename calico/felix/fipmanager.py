@@ -106,9 +106,8 @@ class FloatingIPManager(Actor):
                     # swap by utilizing packet marking, but doing so would make
                     # the code much more complicated and create another
                     # iptables rule per floating IP.
-                    snat.append('--append %s -s %s -d %s -j SNAT '
+                    snat.append('--append %s -s %s -j SNAT '
                                 '--to-source %s' % (CHAIN_FIP_SNAT,
-                                                    nat_map['int_ip'],
                                                     nat_map['int_ip'],
                                                     nat_map['ext_ip']))
                     reverse_maps.append(nat_map['int_ip'])
